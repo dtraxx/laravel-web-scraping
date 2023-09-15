@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('input', function (){
+    return view('form');
+});
+
+Route::controller(\App\Http\Controllers\CrawlController ::class)->group(function(){
+    Route::post('form', 'create')->name('crawl');
+    Route::get('index', 'index')->name('index');
+});
